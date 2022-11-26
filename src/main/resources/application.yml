@@ -1,0 +1,20 @@
+server:
+  port: 9012
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:/databasesInfo;ACCESS_MODE_DATA=rws
+    username: h2
+    password: h2
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      settings:
+        web-allow-others: true
+  sql:
+    init:
+      schema-locations: classpath:db/into.sql
+      username: h2
+      password: h2
+      mode: always
