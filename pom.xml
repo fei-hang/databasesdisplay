@@ -82,14 +82,21 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
+                    <mainClass>cn.sc.databasesdisplay.Application</mainClass>
                     <image>
                         <builder>paketobuildpacks/builder:tiny</builder>
+                        <pullPolicy>IF_NOT_PRESENT</pullPolicy>
                         <env>
                             <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
                         </env>
                     </image>
                     <imageName>databasesdisplay</imageName>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.graalvm.buildtools</groupId>
+                <artifactId>native-maven-plugin</artifactId>
+                <version>0.9.18</version>
             </plugin>
         </plugins>
     </build>

@@ -5,7 +5,6 @@ import cn.sc.databasesdisplay.dto.DatabasesInfo;
 import cn.sc.databasesdisplay.dto.Result;
 import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +16,14 @@ public class DatabaseInfoController {
 
     final JdbcTemplate h2Connexion;
 
-    @GetMapping("/getAllDatabaseInfo")
-    public Result<Object> getAllDatabasesInfoResult() {
-        return Result.ok(h2Connexion.queryForList("SELECT * FROM databasesInfo;"));
+    @GetMapping("/getAllIdAndNameOfDatabaseInfo")
+    public Result<List<DatabasesInfo>> getAllIdAndNameOfDatabaseInfo() {
+        return Result.ok(h2Connexion.queryForList("SELECT id, name FROM databasesInfo;", DatabasesInfo.class));
+    }
+
+    @GetMapping("/getDatabasesInfoResultById/{id}")
+    public Result<DatabasesInfo> getDatabasesInfoResultById(@PathVariable("id") String id) {
+        return Result.ok(h2Connexion.queryForObject("SELECT * FROM databasesInfo WHERE id=?;", DatabasesInfo.class, id));
     }
 
     @PostMapping("/addDatabaseInfo")

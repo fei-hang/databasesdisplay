@@ -10,11 +10,13 @@ spring:
     console:
       enabled: true
       path: /h2
-      settings:
-        web-allow-others: true
   sql:
     init:
       schema-locations: classpath:db/into.sql
       username: h2
       password: h2
       mode: always
+
+  servlet:
+    multipart:
+      max-file-size: 100MB

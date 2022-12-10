@@ -6,9 +6,7 @@ import cn.sc.databasesdisplay.dto.Result;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.Resource;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,12 +22,6 @@ public class DatabaseInfoControllerTest {
     @Resource
     DatabaseInfoController databaseInfoController;
 
-    @Test
-    public void getAllDatabasesInfoResult() throws JsonProcessingException {
-        Result<Object> allDatabasesInfoResult = databaseInfoController.getAllDatabasesInfoResult();
-        log.info(objectMapper.writeValueAsString(allDatabasesInfoResult));
-        Assert.assertEquals(allDatabasesInfoResult.getCode(),"0");
-    }
 
     @Test
     public void addDatabaseInfo() throws JsonProcessingException {

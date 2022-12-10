@@ -28,6 +28,6 @@ public class Result<T>{
     }
 
     public static <T> Result<T> fail(T data) {
-        return new Result<>("0", data);
+        return new Result<>("1", data);
     }
 }
